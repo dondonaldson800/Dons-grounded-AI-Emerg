@@ -1,0 +1,188 @@
+{
+  "project": "Don's Grounded AI Empire",
+  "organization_url": "https://github.com/dondonaldson800/Dons-grounded-AI-Emerg",
+  "generated_at": "2026-10-09T06:04:00Z",
+  "master_suite": {
+    "package_name": "com.donsempire.groundedai",
+    "subscriptions": [
+      {
+        "name": "Power User Pro (Monthly)",
+        "price": "$9.99/mo",
+        "google_play": {
+          "product_id": "dons_empire_pro_monthly",
+          "base_plan_id": "pro-monthly-base",
+          "type": "Auto-renewing subscription"
+        },
+        "apple_app_store": {
+          "product_id": "com.donsempire.groundedai.pro.monthly"
+        },
+        "amazon_appstore": {
+          "sku": "dons_empire_pro_monthly"
+        },
+        "samsung_galaxy_store": {
+          "item_id": "dons_pro_month"
+        }
+      },
+      {
+        "name": "Infinite Creator Elite (Monthly)",
+        "price": "$24.99/mo",
+        "google_play": {
+          "product_id": "dons_empire_elite_monthly",
+          "base_plan_id": "elite-monthly-base",
+          "type": "Auto-renewing subscription"
+        },
+        "apple_app_store": {
+          "product_id": "com.donsempire.groundedai.elite.monthly"
+        },
+        "amazon_appstore": {
+          "sku": "dons_empire_elite_monthly"
+        },
+        "samsung_galaxy_store": {
+          "item_id": "dons_elite_month"
+        }
+      },
+      {
+        "name": "Power User Pro (Annual Pass - 20% Off)",
+        "price": "$95.99/yr",
+        "google_play": {
+          "product_id": "dons_empire_pro_annual",
+          "base_plan_id": "pro-annual-save20",
+          "type": "Auto-renewing subscription"
+        },
+        "apple_app_store": {
+          "product_id": "com.donsempire.groundedai.pro.annual"
+        },
+        "amazon_appstore": {
+          "sku": "dons_empire_pro_annual"
+        },
+        "samsung_galaxy_store": {
+          "item_id": "dons_pro_annual"
+        }
+      }
+    ],
+    "consumables": [
+      {
+        "name": "Starter Token Pack (500 Tokens)",
+        "price": "$4.99",
+        "google_play_sku": "dons_tokens_starter_500",
+        "apple_product_id": "com.donsempire.groundedai.tokens.500",
+        "amazon_sku": "dons_tokens_starter_500",
+        "samsung_item_id": "dons_tok_500"
+      },
+      {
+        "name": "Creator Token Pack (2,000 Tokens)",
+        "price": "$14.99",
+        "google_play_sku": "dons_tokens_creator_2000",
+        "apple_product_id": "com.donsempire.groundedai.tokens.2000",
+        "amazon_sku": "dons_tokens_creator_2000",
+        "samsung_item_id": "dons_tok_2000"
+      },
+      {
+        "name": "Empire Vault (10,000 Tokens)",
+        "price": "$49.99",
+        "google_play_sku": "dons_tokens_vault_10000",
+        "apple_product_id": "com.donsempire.groundedai.tokens.10000",
+        "amazon_sku": "dons_tokens_vault_10000",
+        "samsung_item_id": "dons_tok_10000"
+      }
+    ]
+  },
+  "standalone_apps": [
+    {
+      "app": "OmniAssist - General AI",
+      "package": "com.omniassist.general.app",
+      "subscriptions": {
+        "monthly": {
+          "google_play": { "product_id": "omniassist_general_monthly", "base_plan_id": "omni-monthly-base" },
+          "apple": "com.omniassist.general.monthly",
+          "amazon": "omniassist_general_monthly"
+        },
+        "annual": {
+          "google_play": { "product_id": "omniassist_general_annual", "base_plan_id": "omni-annual-base" },
+          "apple": "com.omniassist.general.annual",
+          "amazon": "omniassist_general_annual"
+        }
+      }
+    },
+    {
+      "app": "VitalTriage - Emergency Clinical",
+      "package": "com.vitaltriage.health.app",
+      "subscriptions": {
+        "monthly": {
+          "google_play": { "product_id": "vitaltriage_clinical_monthly", "base_plan_id": "vital-monthly-base" },
+          "apple": "com.vitaltriage.health.clinical.monthly",
+          "amazon": "vitaltriage_clinical_monthly"
+        },
+        "annual": {
+          "google_play": { "product_id": "vitaltriage_clinical_annual", "base_plan_id": "vital-annual-base" },
+          "apple": "com.vitaltriage.health.clinical.annual",
+          "amazon": "vitaltriage_clinical_annual"
+        }
+      }
+    },
+    {
+      "app": "MedCare Pro - Emergency Clinical",
+      "package": "com.medcarepro.clinical.app",
+      "subscriptions": {
+        "monthly": {
+          "google_play": { "product_id": "medcarepro_emergency_monthly", "base_plan_id": "medcare-monthly-base" },
+          "apple": "com.medcarepro.clinical.emergency.monthly",
+          "amazon": "medcarepro_emergency_monthly"
+        },
+        "annual": {
+          "google_play": { "product_id": "medcarepro_emergency_annual", "base_plan_id": "medcare-annual-base" },
+          "apple": "com.medcarepro.clinical.emergency.annual",
+          "amazon": "medcarepro_emergency_annual"
+        }
+      }
+    },
+    {
+      "app": "CausePilot - Non-Profit Grant Suite",
+      "package": "com.causepilot.nonprofit.app",
+      "subscriptions": {
+        "monthly": {
+          "google_play": { "product_id": "causepilot_grant_monthly", "base_plan_id": "cause-monthly-base" },
+          "apple": "com.causepilot.nonprofit.grant.monthly",
+          "amazon": "causepilot_grant_monthly"
+        },
+        "annual": {
+          "google_play": { "product_id": "causepilot_grant_annual", "base_plan_id": "cause-annual-base" },
+          "apple": "com.causepilot.nonprofit.grant.annual",
+          "amazon": "causepilot_grant_annual"
+        }
+      }
+    },
+    {
+      "app": "ClauseGuard - Legal Contract Auditor",
+      "package": "com.clauseguard.legal.app",
+      "subscriptions": {
+        "monthly": {
+          "google_play": { "product_id": "clauseguard_contract_monthly", "base_plan_id": "clause-monthly-base" },
+          "apple": "com.clauseguard.legal.contract.monthly",
+          "amazon": "clauseguard_contract_monthly"
+        },
+        "annual": {
+          "google_play": { "product_id": "clauseguard_contract_annual", "base_plan_id": "clause-annual-base" },
+          "apple": "com.clauseguard.legal.contract.annual",
+          "amazon": "clauseguard_contract_annual"
+        }
+      }
+    },
+    {
+      "app": "ClaimValuator - Injury Settlement Multiplier",
+      "package": "com.claimvaluator.settlement.app",
+      "subscriptions": {
+        "monthly": {
+          "google_play": { "product_id": "claimvaluator_injury_monthly", "base_plan_id": "claim-monthly-base" },
+          "apple": "com.claimvaluator.settlement.injury.monthly",
+          "amazon": "claimvaluator_injury_monthly"
+        },
+        "annual": {
+          "google_play": { "product_id": "claimvaluator_injury_annual", "base_plan_id": "claim-annual-base" },
+          "apple": "com.claimvaluator.settlement.injury.annual",
+          "amazon": "claimvaluator_injury_annual"
+        }
+      }
+    }
+  ]
+}
