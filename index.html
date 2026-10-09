@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don's Grounded AI Empire</title>
+    <meta name="description" content="Don's Grounded AI Empire: A professional-grade suite of 20 grounded AI tools prepared for Amazon Appstore, Samsung Galaxy Store, web, and mobile distribution.">
+    <meta property="og:title" content="Don's Grounded AI Empire">
+    <meta property="og:description" content="Don's Grounded AI Empire: A professional-grade suite of 20 grounded AI tools prepared for Amazon Appstore, Samsung Galaxy Store, web, and mobile distribution.">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#000000">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/expo/expo/main/templates/expo-template-blank/assets/icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js').catch(function() {});
+        });
+      }
+    </script>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

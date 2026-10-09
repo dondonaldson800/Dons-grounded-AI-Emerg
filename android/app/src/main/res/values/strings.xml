@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Don\'s Grounded AI Empire</string>
+
+    <!-- Google AdMob Production Values -->
+    <string name="admob_app_id">ca-app-pub-8715031019966551~8423706184</string>
+    <string name="admob_banner_unit_id">ca-app-pub-8715031019966551/7800201293</string>
+    <string name="admob_interstitial_unit_id">ca-app-pub-8715031019966551/4392127683</string>
+    <string name="admob_rewarded_unit_id">ca-app-pub-8715031019966551/5231846921</string>
+
+    <!-- Google AdMob Official Test Values (for Development & Testing) -->
+    <string name="admob_test_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_test_banner_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_test_interstitial_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_test_rewarded_unit_id">ca-app-pub-3940256099942544/5224354917</string>
+</resources>

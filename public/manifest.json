@@ -1,0 +1,25 @@
+{
+  "short_name": "Don's Empire",
+  "name": "Don's Grounded AI Empire - 20-in-1 Suite",
+  "description": "Professional 20-in-1 Grounded AI Suite featuring legal analysis, clinical telehealth, wealth estimation, trade calculators, and real-time search intelligence.",
+  "categories": ["productivity", "utilities", "business", "education"],
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/expo/expo/main/templates/expo-template-blank/assets/icon.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/expo/expo/main/templates/expo-template-blank/assets/icon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#090d16",
+  "background_color": "#020617"
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AdMob Production IDs for com.donsempire.groundedai -->
+    <string name="admob_app_id" translatable="false">ca-app-pub-8715031019966551~8423706184</string>
+    <string name="admob_banner_id" translatable="false">ca-app-pub-8715031019966551/7800201293</string>
+    <string name="admob_interstitial_id" translatable="false">ca-app-pub-8715031019966551/4392127683</string>
+    <string name="admob_rewarded_id" translatable="false">ca-app-pub-8715031019966551/5231846921</string>
+    <bool name="admob_delay_app_measurement_init">false</bool>
+    <bool name="admob_flag_auto_init">true</bool>
+</resources>

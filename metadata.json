@@ -1,0 +1,12 @@
+{
+  "name": "Don's Grounded AI Empire",
+  "description": "Don's Grounded AI Empire: A professional-grade suite of 20 grounded AI tools prepared for Amazon Appstore, Samsung Galaxy Store, web, and mobile distribution.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

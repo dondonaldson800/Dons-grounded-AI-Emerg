@@ -1,0 +1,94 @@
+{
+  "expo": {
+    "name": "Don's Grounded AI Empire",
+    "slug": "dons-grounded-ai-empire-v2",
+    "version": "1.0.0",
+    "orientation": "default",
+    "userInterfaceStyle": "dark",
+    "description": "Professional 20-in-1 Grounded AI Suite featuring legal analysis, clinical health tools, financial calculation, trade estimates, and real-time search intelligence.",
+    "primaryColor": "#4f46e5",
+    "icon": "./public/icon-512.png",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.donsempire.groundedai"
+    },
+    "android": {
+      "package": "com.donsempire.groundedai",
+      "versionCode": 100,
+      "adaptiveIcon": {
+        "backgroundColor": "#090d16"
+      },
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "CAMERA",
+        "RECORD_AUDIO",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "MODIFY_AUDIO_SETTINGS",
+        "VIBRATE",
+        "com.android.vending.BILLING"
+      ],
+      "softwareKeyboardLayoutMode": "resize",
+      "allowBackup": true,
+      "metaData": {
+        "com.google.android.gms.ads.APPLICATION_ID": "ca-app-pub-8715031019966551~8423706184",
+        "com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT": false
+      }
+    },
+    "plugins": [
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-8715031019966551~8423706184",
+          "iosAppId": "ca-app-pub-8715031019966551~8423706184"
+        }
+      ]
+    ],
+    "web": {
+      "favicon": "./public/favicon.ico"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "de9a3bfd-69f0-4928-afc7-2114dfc8376d"
+      },
+      "admob": {
+        "appId": "ca-app-pub-8715031019966551~8423706184",
+        "bannerUnitId": "ca-app-pub-8715031019966551/7800201293",
+        "interstitialUnitId": "ca-app-pub-8715031019966551/4392127683",
+        "rewardedUnitId": "ca-app-pub-8715031019966551/5231846921",
+        "testAppId": "ca-app-pub-3940256099942544~3347511713",
+        "testBannerUnitId": "ca-app-pub-3940256099942544/6300978111",
+        "testInterstitialUnitId": "ca-app-pub-3940256099942544/1033173712",
+        "testRewardedUnitId": "ca-app-pub-3940256099942544/5224354917"
+      },
+      "sku": "com.donsempire.groundedai",
+      "storeProducts": {
+        "subscriptions": [
+          { "sku": "dons_empire_pro_monthly", "name": "Power User Pro", "price": "9.99" },
+          { "sku": "dons_empire_elite_monthly", "name": "Infinite Creator Elite", "price": "24.99" }
+        ],
+        "inAppProducts": [
+          { "sku": "dons_tokens_starter_500", "name": "Starter Token Pack (500)", "price": "4.99" },
+          { "sku": "dons_tokens_creator_2000", "name": "Creator Token Pack (2,000)", "price": "14.99" },
+          { "sku": "dons_tokens_vault_10000", "name": "Empire Vault (10,000)", "price": "49.99" }
+        ]
+      },
+      "stores": {
+        "amazonAppstore": {
+          "supportedDevices": ["Fire_Tablets", "Non_Amazon_Android"],
+          "category": "Productivity",
+          "contentRating": "12+"
+        },
+        "samsungGalaxyStore": {
+          "category": "Productivity & Utilities",
+          "supportedFeatures": ["MultiWindow", "SamsungDeX", "FoldableSupport"]
+        }
+      }
+    },
+    "owner": "dondonduck"
+  }
+}

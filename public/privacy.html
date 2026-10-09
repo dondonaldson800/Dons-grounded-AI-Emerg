@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal & Medical Compliance Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 p-8 max-w-3xl mx-auto">
+    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+        <h1 class="text-3xl font-black mb-2 text-slate-900 tracking-tight">Legal & Medical Compliance Page</h1>
+        <p class="text-sm text-slate-500 mb-8 font-medium uppercase tracking-wider">Effective Date: March 11, 2026 | Draft Mode</p>
+
+        <section class="mb-8">
+            <h2 class="text-lg font-bold mb-3 text-slate-800 uppercase tracking-wide border-b border-slate-100 pb-2">1. The Lead Generation Disclaimer</h2>
+            <p class="text-slate-600 leading-relaxed text-sm">
+                By submitting this form, you agree that <strong>[Your Empire Name]</strong> is a lead generation service and not a law firm or medical provider. We do not provide legal or medical advice. You agree to be contacted by our network of third-party professionals via phone, text (SMS), or email, even if you are on a 'Do Not Call' list. Standard message and data rates may apply.
+            </p>
+        </section>
+
+        <section class="mb-8" id="hipaa-section" style="display: none;">
+            <h2 class="text-lg font-bold mb-3 text-slate-800 uppercase tracking-wide border-b border-slate-100 pb-2">2. HIPAA Notice of Privacy Practices (2026 Update)</h2>
+            <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-xl">
+                <p class="text-emerald-800 leading-relaxed text-sm">
+                    We comply with the HIPAA Privacy Rule as of February 16, 2026. Your Protected Health Information (PHI) will be encrypted using AES-256 standards. You have the right to access your data, request corrections, and revoke your consent for data sharing at any time. <br><br>
+                    <strong>Warning:</strong> Once your information is disclosed to a third-party provider pursuant to your consent, it may no longer be protected by the HIPAA Privacy Rule.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-lg font-bold mb-3 text-slate-800 uppercase tracking-wide border-b border-slate-100 pb-2">3. One-to-One Consent Partners</h2>
+            <p class="text-slate-600 mb-4 text-sm">Pursuant to 2026 FCC regulations, you are providing express written consent to be contacted by the following specific partners:</p>
+            <ul id="partner-list" class="list-disc pl-6 text-slate-700 text-sm font-medium space-y-2">
+                <!-- Populated dynamically by JS -->
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // Dynamic One-to-One Consent Logic
+        const urlParams = new URLSearchParams(window.location.search);
+        const type = urlParams.get('type') || 'default';
+
+        const partners = {
+            law: ['LegalZoom', 'Morgan & Morgan', '[Draft: Local Network Attorneys]'],
+            medical: ['Health IQ', 'Teladoc', '[Draft: Local Network Physicians]'],
+            personal_injury: ['Nolo Legal', 'Local Injury Attorneys'],
+            real_estate: ['Zillow Premier', 'Local Real Estate Agents'],
+            finance: ['NerdWallet', 'Local Financial Advisors'],
+            tax: ['TurboTax', 'Local CPAs'],
+            dental: ['1-800-DENTIST', 'Local Dental Clinics'],
+            chiropractic: ['ChiroTrust', 'Local Chiropractors'],
+            auto_repair: ['RepairPal', 'Local Mechanics'],
+            roofing: ['HomeAdvisor', 'Local Roofing Contractors'],
+            hvac: ['Angi', 'Local HVAC Technicians'],
+            it_support: ['Geek Squad', 'Local IT Professionals'],
+            insurance: ['Policygenius', 'GEICO Partners', 'Local Insurance Brokers'],
+            home_security: ['ADT Security', 'Vivint', 'Local Security Installers'],
+            credit_repair: ['Lexington Law', 'Credit Repair Specialists'],
+            fitness: ['MyFitnessPal', 'Local Personal Trainers'],
+            nutrition: ['Noom', 'Local Dietitians'],
+            landscaping: ['TruGreen', 'Local Landscapers'],
+            veterinary: ['VCA Animal Hospitals', 'Local Veterinarians'],
+            immigration: ['Boundless Immigration', 'Immigration Attorneys'],
+            default: ['[Draft: Empire Network Partners]']
+        };
+
+        // Show HIPAA notice only for medical apps
+        if (type === 'medical') {
+            document.getElementById('hipaa-section').style.display = 'block';
+        }
+
+        // Populate the partner list
+        const partnerList = document.getElementById('partner-list');
+        const activePartners = partners[type] || partners.default;
+        
+        activePartners.forEach(partner => {
+            const li = document.createElement('li');
+            li.textContent = partner;
+            partnerList.appendChild(li);
+        });
+    </script>
+</body>
+</html>

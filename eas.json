@@ -1,0 +1,168 @@
+{
+  "cli": {
+    "version": ">= 9.0.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "amazon": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      }
+    },
+    "samsung": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "app-bundle"
+      }
+    },
+    "production": {
+      "android": {
+        "buildType": "app-bundle"
+      }
+    },
+    "app1-general": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "STANDALONE_APP_KEY": "general",
+        "STANDALONE_PACKAGE": "com.omniassist.general.app"
+      }
+    },
+    "app2-medical": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "STANDALONE_APP_KEY": "medical",
+        "STANDALONE_PACKAGE": "com.vitaltriage.health.app"
+      }
+    },
+    "app3-medicalcare": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "STANDALONE_APP_KEY": "medical_care",
+        "STANDALONE_PACKAGE": "com.medcarepro.clinical.app"
+      }
+    },
+    "app4-nonprofit": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "STANDALONE_APP_KEY": "nonprofit",
+        "STANDALONE_PACKAGE": "com.causepilot.nonprofit.app"
+      }
+    },
+    "app5-law": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "STANDALONE_APP_KEY": "law",
+        "STANDALONE_PACKAGE": "com.clauseguard.legal.app"
+      }
+    },
+    "app6-injury": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "STANDALONE_APP_KEY": "personal_injury",
+        "STANDALONE_PACKAGE": "com.claimvaluator.settlement.app"
+      }
+    },
+    "decoy-law": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "STANDALONE_APP_KEY": "law",
+        "STANDALONE_PACKAGE": "com.clauseguard.legal.app"
+      }
+    },
+    "decoy-medical": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "STANDALONE_APP_KEY": "medical",
+        "STANDALONE_PACKAGE": "com.vitaltriage.health.app"
+      }
+    },
+    "decoy-injury": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "STANDALONE_APP_KEY": "personal_injury",
+        "STANDALONE_PACKAGE": "com.claimvaluator.settlement.app"
+      }
+    },
+    "decoy-realestate": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "STANDALONE_APP_KEY": "real_estate",
+        "STANDALONE_PACKAGE": "com.propyield.calculator.app"
+      }
+    },
+    "decoy-finance": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "STANDALONE_APP_KEY": "finance",
+        "STANDALONE_PACKAGE": "com.wealthvector.finance.app"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "android": {
+        "track": "internal",
+        "releaseStatus": "completed"
+      },
+      "ios": {
+        "sku": "com.donsempire.groundedai",
+        "companyName": "Don Donaldson AI Technologies"
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "applicationId": "ca-app-pub-8715031019966551~8423706184",
+  "package": "com.donsempire.groundedai",
+  "appName": "Don's Grounded AI Empire",
+  "production": {
+    "appId": "ca-app-pub-8715031019966551~8423706184",
+    "bannerUnitId": "ca-app-pub-8715031019966551/7800201293",
+    "interstitialUnitId": "ca-app-pub-8715031019966551/4392127683",
+    "rewardedUnitId": "ca-app-pub-8715031019966551/5231846921"
+  },
+  "test": {
+    "appId": "ca-app-pub-3940256099942544~3347511713",
+    "bannerUnitId": "ca-app-pub-3940256099942544/6300978111",
+    "interstitialUnitId": "ca-app-pub-3940256099942544/1033173712",
+    "rewardedUnitId": "ca-app-pub-3940256099942544/5224354917"
+  },
+  "android": {
+    "resValuesPath": "android/app/src/main/res/values/admob_values.xml",
+    "manifestPath": "android/app/src/main/AndroidManifest.xml",
+    "metaDataName": "com.google.android.gms.ads.APPLICATION_ID"
+  },
+  "targeting": {
+    "maxAdContentRating": "MA",
+    "tagForChildDirectedTreatment": false,
+    "tagForUnderAgeOfConsent": false
+  }
+}
