@@ -1,0 +1,86 @@
+name: Master Android Pipeline (APK & AAB)
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      build_target:
+        description: 'Build Target'
+        required: true
+        default: 'both'
+        type: choice
+        options:
+          - both
+          - apk-only
+          - aab-only
+
+jobs:
+  build-android:
+    name: Build Android Binaries
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (v20)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Setup Java JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+          cache: 'gradle'
+
+      - name: Install NPM Dependencies
+        run: npm install
+
+      - name: Compile Web Application
+        run: npm run build
+
+      - name: Initialize & Synchronize Capacitor Android
+        run: |
+          if [ ! -d "android" ] || [ ! -f "android/build.gradle" ]; then
+            echo "[+] Adding Android platform via Capacitor..."
+            npx cap add android
+          fi
+          echo "[+] Syncing Web Assets into Android Studio project..."
+          npx cap sync android
+
+      - name: Grant Execute Permission to Gradle Wrapper
+        run: |
+          cd android
+          chmod +x gradlew
+
+      - name: Build Android APK (Universal / Amazon / Direct Install)
+        if: ${{ github.event_name == 'push' || github.event.inputs.build_target == 'both' || github.event.inputs.build_target == 'apk-only' }}
+        run: |
+          cd android
+          ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Build Android App Bundle AAB (Google Play & Samsung Store)
+        if: ${{ github.event_name == 'push' || github.event.inputs.build_target == 'both' || github.event.inputs.build_target == 'aab-only' }}
+        run: |
+          cd android
+          ./gradlew bundleDebug --no-daemon --stacktrace
+
+      - name: Upload Debug APK Artifact
+        if: ${{ github.event_name == 'push' || github.event.inputs.build_target == 'both' || github.event.inputs.build_target == 'apk-only' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: dons-grounded-ai-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 14
+
+      - name: Upload App Bundle AAB Artifact
+        if: ${{ github.event_name == 'push' || github.event.inputs.build_target == 'both' || github.event.inputs.build_target == 'aab-only' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: dons-grounded-ai-bundle-aab
+          path: android/app/build/outputs/bundle/debug/app-debug.aab
+          retention-days: 14

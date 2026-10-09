@@ -1,0 +1,34 @@
+name: Master CI Pipeline (Validation & Web Build)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    name: Code Quality & Build Verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (v20)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Verify Web Production Build
+        run: npm run build
+
+      - name: Verify Store SKU Manifest
+        run: |
+          if [ -f "export_all_store_skus.json" ]; then
+            node -e "const data = require('./export_all_store_skus.json'); console.log('✅ SKU Manifest verified for:', data.project);"
+          fi
