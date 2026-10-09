@@ -35,6 +35,9 @@
     "ios": "expo run:ios"
   },
   "dependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/cli": "^8.5.3",
+    "@capacitor/core": "^8.5.3",
     "@google/genai": "^1.38.0",
     "@tailwindcss/vite": "^4.2.1",
     "babel-preset-expo": "~12.0.0",
