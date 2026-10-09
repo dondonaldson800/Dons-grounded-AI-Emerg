@@ -5,6 +5,7 @@ import { SubscriptionTier } from '../types';
 import AffiliateSection from './AffiliateSection';
 import StoreReadinessHub from './StoreReadinessHub';
 import SkuRegistryHub from './SkuRegistryHub';
+import MockMonetizationHub from './MockMonetizationHub';
 import { getAdMobConfig, saveAdMobConfig, PRODUCTION_ADMOB_VALUES, TEST_ADMOB_VALUES } from '../services/admobConfig';
 import { getPaymentConfig, savePaymentConfig, getTransactions, PaymentConfig, PaymentTransaction } from '../services/paymentService';
 import PaymentModal from './PaymentModal';
@@ -20,7 +21,7 @@ const ManagementHub: React.FC = () => {
   const [keySavedSuccess, setKeySavedSuccess] = useState(false);
   const [masterKey, setMasterKey] = useState('');
   const [isSaving, setIsSaving] = useState(false);
-  const [activeTab, setActiveTab] = useState<'config' | 'projects' | 'health' | 'launch' | 'stores' | 'tokens' | 'assets' | 'skus'>('skus');
+  const [activeTab, setActiveTab] = useState<'config' | 'projects' | 'health' | 'launch' | 'stores' | 'tokens' | 'assets' | 'skus' | 'monetization'>('skus');
   const [admobAppId, setAdmobAppId] = useState(PRODUCTION_ADMOB_VALUES.appId);
   const [admobBannerId, setAdmobBannerId] = useState(PRODUCTION_ADMOB_VALUES.bannerUnitId);
   const [admobInterstitialId, setAdmobInterstitialId] = useState(PRODUCTION_ADMOB_VALUES.interstitialUnitId);
@@ -313,6 +314,12 @@ const ManagementHub: React.FC = () => {
                 📦 Amazon & Samsung
               </button>
               <button 
+                onClick={() => setActiveTab('monetization')}
+                className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${activeTab === 'monetization' ? 'bg-emerald-500 text-slate-950 shadow-lg' : 'text-emerald-400 hover:text-emerald-300'}`}
+              >
+                💰 Mock Figures
+              </button>
+              <button 
                 onClick={() => setActiveTab('config')}
                 className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${activeTab === 'config' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
               >
@@ -361,6 +368,12 @@ const ManagementHub: React.FC = () => {
         {activeTab === 'stores' && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             <StoreReadinessHub />
+          </div>
+        )}
+
+        {activeTab === 'monetization' && (
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <MockMonetizationHub />
           </div>
         )}
 
@@ -1018,10 +1031,16 @@ const ManagementHub: React.FC = () => {
                 <h4 className="text-4xl font-black text-white tracking-tighter">{activeUsers.toLocaleString()}</h4>
                 <p className="text-[10px] text-emerald-500 font-bold">+12% from yesterday</p>
               </div>
-              <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8 space-y-4">
-                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Global Revenue</p>
+              <div 
+                onClick={() => setActiveTab('monetization')}
+                className="bg-slate-900/40 border border-slate-800 hover:border-emerald-500/50 rounded-3xl p-8 space-y-4 cursor-pointer transition-all group"
+              >
+                <div className="flex items-center justify-between">
+                  <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest group-hover:text-emerald-400 transition-colors">Global Revenue</p>
+                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">SIMULATE 💰</span>
+                </div>
                 <h4 className="text-4xl font-black text-white tracking-tighter">${globalRevenue.toLocaleString()}</h4>
-                <p className="text-[10px] text-emerald-500 font-bold">Payout in 3 days</p>
+                <p className="text-[10px] text-emerald-500 font-bold">Payout in 3 days • Click to view full 4-phase mock figures</p>
               </div>
               <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8 space-y-4">
                 <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">API Requests</p>

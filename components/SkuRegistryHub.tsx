@@ -6,13 +6,14 @@ import {
   STORE_COMPLIANCE_AND_OTHER_REQUIREMENTS,
   StoreProductSKU
 } from '../services/skuService';
+import MockMonetizationHub from './MockMonetizationHub';
 
 interface SkuRegistryHubProps {
   onClose?: () => void;
 }
 
 export const SkuRegistryHub: React.FC<SkuRegistryHubProps> = ({ onClose }) => {
-  const [activeTab, setActiveTab] = useState<'master' | 'standalone' | 'validator' | 'other_checklist'>('validator');
+  const [activeTab, setActiveTab] = useState<'master' | 'standalone' | 'validator' | 'other_checklist' | 'mock_revenue'>('mock_revenue');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   
   // Interactive SKU Validator State
@@ -72,6 +73,17 @@ export const SkuRegistryHub: React.FC<SkuRegistryHubProps> = ({ onClose }) => {
         {/* Tab Navigation */}
         <div className="flex items-center gap-2 border-b border-slate-800 pb-3 overflow-x-auto custom-scrollbar">
           <button
+            onClick={() => setActiveTab('mock_revenue')}
+            className={`px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2 shrink-0 ${
+              activeTab === 'mock_revenue'
+                ? 'bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/30'
+                : 'text-emerald-400 hover:text-white hover:bg-slate-900 border border-emerald-500/30'
+            }`}
+          >
+            <span>💰</span>
+            <span>Mock Monetization & Figures</span>
+          </button>
+          <button
             onClick={() => setActiveTab('validator')}
             className={`px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2 shrink-0 ${
               activeTab === 'validator'
@@ -116,6 +128,13 @@ export const SkuRegistryHub: React.FC<SkuRegistryHubProps> = ({ onClose }) => {
             <span>"The Other" Store Checklist</span>
           </button>
         </div>
+
+        {/* TAB 0: MOCK MONETIZATION & REVENUE PROJECTIONS */}
+        {activeTab === 'mock_revenue' && (
+          <div className="space-y-6 animate-in fade-in duration-200">
+            <MockMonetizationHub />
+          </div>
+        )}
 
         {/* TAB 1: INTERACTIVE SKU DIAGNOSTIC & AUTO-FIXER */}
         {activeTab === 'validator' && (
