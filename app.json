@@ -39,15 +39,6 @@
         "com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT": false
       }
     },
-    "plugins": [
-      [
-        "react-native-google-mobile-ads",
-        {
-          "androidAppId": "ca-app-pub-8715031019966551~8423706184",
-          "iosAppId": "ca-app-pub-8715031019966551~8423706184"
-        }
-      ]
-    ],
     "web": {
       "favicon": "./public/favicon.ico"
     },
