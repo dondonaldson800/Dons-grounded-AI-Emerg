@@ -33,7 +33,8 @@
     "lint": "tsc --noEmit",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "eas-build-pre-install": "sh scripts/install-jdk21.sh"
+    "eas-build-pre-install": "sh scripts/install-jdk21.sh",
+    "eas-build-post-install": "npm run build && npx cap sync android"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.3",
