@@ -34,7 +34,7 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "eas-build-pre-install": "sh scripts/install-jdk21.sh",
-    "eas-build-post-install": "npm run build && npx cap sync android"
+    "eas-build-post-install": "npm run build && node ./node_modules/@capacitor/cli/bin/capacitor sync android"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.3",
