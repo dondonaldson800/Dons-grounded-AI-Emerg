@@ -32,7 +32,8 @@
     "preview": "vite preview",
     "lint": "tsc --noEmit",
     "android": "expo run:android",
-    "ios": "expo run:ios"
+    "ios": "expo run:ios",
+    "eas-build-pre-install": "sh scripts/install-jdk21.sh"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.3",
