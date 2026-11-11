@@ -15,9 +15,9 @@ export const fileToBase64 = (file: File): Promise<string> => {
 
 export const getCustomApiKey = (): string => {
   try {
-    return localStorage.getItem('gemini_api_key') || process.env.GEMINI_API_KEY || process.env.API_KEY || '';
+    return localStorage.getItem('gemini_api_key') || (import.meta as any).env?.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY || process.env.API_KEY || '';
   } catch {
-    return process.env.GEMINI_API_KEY || process.env.API_KEY || '';
+    return (import.meta as any).env?.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY || process.env.API_KEY || '';
   }
 };
 
