@@ -26,6 +26,7 @@ export const getAIInstance = () => {
 };
 
 export const GEMINI_MODELS = {
+  FLASH_3_8: 'gemini-3.8-flash',
   FLASH_3_7: 'gemini-3.7-flash',
   PRO_3_7: 'gemini-3.7-pro',
   FLASH_2_5: 'gemini-2.5-flash',
@@ -59,7 +60,7 @@ export const runChat = async (
       const data = await res.json();
       return {
         text: data.text || "No response received.",
-        modelUsed: data.modelUsed || "gemini-2.5-flash",
+        modelUsed: data.modelUsed || "gemini-3.8-flash",
         groundingChunks: data.groundingChunks || []
       };
     }
@@ -69,8 +70,8 @@ export const runChat = async (
 
   // Fallback to client-side SDK if backend is unavailable
   const ai = getAIInstance();
-  let modelName = options.model || (options.thinking ? 'gemini-3.7-pro' : 'gemini-3.7-flash');
-  if (options.lowLatency) modelName = 'gemini-2.5-flash';
+  let modelName = options.model || (options.thinking ? 'gemini-3.8-flash' : 'gemini-3.8-flash');
+  if (options.lowLatency) modelName = 'gemini-3.8-flash';
   
   const config: any = {};
   if (options.thinking) {
@@ -102,16 +103,16 @@ export const runChat = async (
       groundingChunks: response.candidates?.[0]?.groundingMetadata?.groundingChunks || []
     };
   } catch (err) {
-    console.warn(`Attempt with ${modelName} failed, falling back to gemini-2.5-flash:`, err);
+    console.warn(`Attempt with ${modelName} failed, falling back to gemini-3.8-flash:`, err);
     const fallbackResponse = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.8-flash',
       contents: { parts },
       config: options.search ? { tools: [{ googleSearch: {} }] } : {}
     });
 
     return {
       text: fallbackResponse.text || "No response received.",
-      modelUsed: 'gemini-2.5-flash (fallback)',
+      modelUsed: 'gemini-3.8-flash (fallback)',
       groundingChunks: fallbackResponse.candidates?.[0]?.groundingMetadata?.groundingChunks || []
     };
   }
