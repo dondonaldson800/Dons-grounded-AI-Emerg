@@ -43,7 +43,7 @@ export const FIRST_FIVE_DECOYS: DecoyAppSpec[] = [
     toolType: 'general_calc',
     toolName: 'Task Breakdown & Smart Productivity Planner',
     reviewerNotes: 'OmniAssist is a standalone general-purpose productivity application that assists users with structured task breakdown, writing, logical reasoning, and daily workflow planning. Powered by Gemini with zero mandatory paywalls for core tools.',
-    geminiModel: 'gemini-2.5-flash',
+    geminiModel: 'gemini-3.8-flash',
     features: ['Multi-Topic Reasoning', 'Smart Task Breakdown', 'Daily Time Blocking', 'Executive Action Roadmaps']
   },
   {
@@ -60,7 +60,7 @@ export const FIRST_FIVE_DECOYS: DecoyAppSpec[] = [
     toolType: 'medical_calc',
     toolName: 'Symptom & Drug Interaction Screener',
     reviewerNotes: 'VitalTriage is an educational and informational clinical triage utility. It screens potential pharmaceutical interactions and summarizes symptom markers using verified clinical research data.',
-    geminiModel: 'gemini-2.5-flash',
+    geminiModel: 'gemini-3.8-flash',
     features: ['Drug Interaction Checker', 'Clinical Reference Grounding', 'Symptom Severity Triage', 'Blood Pressure & Vitals Stage']
   },
   {
@@ -77,7 +77,7 @@ export const FIRST_FIVE_DECOYS: DecoyAppSpec[] = [
     toolType: 'medcare_calc',
     toolName: 'Clinical Diagnostic & Emergency Care Protocol',
     reviewerNotes: 'MedCare Pro is a standalone clinical diagnostic reference utility. It calculates vital sign emergency indexes, triage acuity benchmarks, and provides immediate emergency first-response protocol summaries.',
-    geminiModel: 'gemini-2.5-flash',
+    geminiModel: 'gemini-3.8-flash',
     features: ['Emergency Care Protocols', 'Vital Signs Diagnostic Index', 'Pediatric Dosage Helper', 'Acuity Scoring Matrix']
   },
   {
@@ -94,7 +94,7 @@ export const FIRST_FIVE_DECOYS: DecoyAppSpec[] = [
     toolType: 'nonprofit_calc',
     toolName: 'Non-Profit Grant & Fundraising Impact Calculator',
     reviewerNotes: 'CausePilot is a dedicated utility for 501(c)(3) charities and non-profit organizations. It models grant allocation efficiency, calculates fundraising event ROI, and generates compliant donor impact narratives.',
-    geminiModel: 'gemini-2.5-flash',
+    geminiModel: 'gemini-3.8-flash',
     features: ['501(c)(3) Compliance Checker', 'Grant Proposal Generator', 'Fundraising Event ROI Model', 'Donor Retention & Impact Forecast']
   },
   {
@@ -111,7 +111,7 @@ export const FIRST_FIVE_DECOYS: DecoyAppSpec[] = [
     toolType: 'legal_calc',
     toolName: 'Contract Clause & Risk Auditor',
     reviewerNotes: 'ClauseGuard is a standalone legal utility that assists users in drafting standard contracts and auditing risk clauses. Real-time statute grounding is provided via Gemini with no mandatory subscription for core tools.',
-    geminiModel: 'gemini-2.5-flash',
+    geminiModel: 'gemini-3.8-flash',
     features: ['NDA & Contract Generator', 'Clause Risk Scoring', 'Statutory Grounding', 'Offline Contract Templates']
   },
   {
@@ -128,7 +128,7 @@ export const FIRST_FIVE_DECOYS: DecoyAppSpec[] = [
     toolType: 'injury_calc',
     toolName: 'Settlement Value Multiplier Calculator',
     reviewerNotes: 'ClaimValuator is a dedicated settlement estimate calculator for insurance claims and litigation. It calculates pain-and-suffering multipliers, medical special damages, and lost income models.',
-    geminiModel: 'gemini-2.5-flash',
+    geminiModel: 'gemini-3.8-flash',
     features: ['Settlement Multiplier (1.5x-5.0x)', 'Lost Wages Worksheet', 'Demand Letter Generator', 'Damage Itemization']
   }
 ];
@@ -137,7 +137,7 @@ export const DecoyAppsHub: React.FC<DecoyAppsHubProps> = ({ tier, onOpenStore })
   const [selectedDecoy, setSelectedDecoy] = useState<DecoyAppSpec | null>(null);
   const [activeTab, setActiveTab] = useState<'matrix' | 'store_kits' | 'checklist' | 'deployment' | 'skus'>('deployment');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
-  const [selectedGeminiModel, setSelectedGeminiModel] = useState<string>('gemini-3.7-flash');
+  const [selectedGeminiModel, setSelectedGeminiModel] = useState<string>('gemini-3.8-flash');
   const [showDirectTool, setShowDirectTool] = useState<string | null>(null);
   const [deployedFilter, setDeployedFilter] = useState<'all' | 'amazon' | 'samsung'>('all');
 
@@ -244,26 +244,26 @@ export const DecoyAppsHub: React.FC<DecoyAppsHubProps> = ({ tier, onOpenStore })
             <div className="bg-slate-900 border border-slate-800 p-2 rounded-2xl flex items-center gap-2">
               <span className="text-xs font-bold text-slate-400 pl-2">Engine:</span>
               <button
-                onClick={() => setSelectedGeminiModel('gemini-3.7-flash')}
+                onClick={() => setSelectedGeminiModel('gemini-3.8-flash')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-black uppercase transition-all flex items-center gap-1.5 ${
-                  selectedGeminiModel === 'gemini-3.7-flash'
+                  selectedGeminiModel === 'gemini-3.8-flash'
                     ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
                 <span>⚡</span>
-                <span>Gemini 3.7 Flash</span>
+                <span>Gemini 3.8 Flash</span>
               </button>
               <button
-                onClick={() => setSelectedGeminiModel('gemini-3.7-pro')}
+                onClick={() => setSelectedGeminiModel('gemini-3-flash-preview')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-black uppercase transition-all flex items-center gap-1.5 ${
-                  selectedGeminiModel === 'gemini-3.7-pro'
+                  selectedGeminiModel === 'gemini-3-flash-preview'
                     ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/30'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
                 <span>🧠</span>
-                <span>Gemini 3.7 Pro</span>
+                <span>Gemini 3 Flash</span>
               </button>
             </div>
           </div>

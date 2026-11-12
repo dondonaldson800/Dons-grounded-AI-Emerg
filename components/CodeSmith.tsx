@@ -37,7 +37,7 @@ const CodeSmith: React.FC<CodeSmithProps> = ({ tier }) => {
       const result = await runChat(
         `You are Code Smith, an elite Master Developer AI assistant. Help the user with the following coding request: ${userMsg}`,
         messages,
-        { model: 'gemini-3.1-pro-preview', thinking: true }
+        { model: 'gemini-3.8-flash', thinking: true }
       );
 
       setMessages(prev => [...prev, { role: 'model', text: result.text || 'No response generated.' }]);
@@ -61,7 +61,7 @@ const CodeSmith: React.FC<CodeSmithProps> = ({ tier }) => {
         </div>
         <div className="ml-auto flex items-center gap-2">
           <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-          <span className="text-[10px] text-slate-500 font-black uppercase tracking-widest">Gemini 3.1 Pro</span>
+          <span className="text-[10px] text-slate-500 font-black uppercase tracking-widest">Gemini 3.8 Flash</span>
         </div>
       </header>
 
@@ -121,7 +121,7 @@ const CodeSmith: React.FC<CodeSmithProps> = ({ tier }) => {
         </div>
         <div className="text-center mt-3">
           <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest">
-            Powered by Gemini 3.1 Pro • Don's Empire Node 02
+            Powered by Gemini 3.8 Flash • Don's Empire Node 02
           </span>
         </div>
       </div>
