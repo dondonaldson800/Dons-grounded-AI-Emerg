@@ -36,14 +36,6 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
   const [isProcessing, setIsProcessing] = useState(false);
   const [completedTx, setCompletedTx] = useState<{ id: string; ref: string; dest: string } | null>(null);
 
-  // Stripe card state
-  const [cardNumber, setCardNumber] = useState('');
-  const [cardExpiry, setCardExpiry] = useState('');
-  const [cardCvc, setCardCvc] = useState('');
-  const [cardZip, setCardZip] = useState('');
-  const [cardName, setCardName] = useState(user?.displayName || '');
-  const [stripeError, setStripeError] = useState('');
-
   if (!isOpen) return null;
 
   const handleCopyCashtag = () => {
@@ -97,25 +89,12 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
     }
   };
 
-  const handleStripeCardSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStripeError('');
-
-    const cleanCard = cardNumber.replace(/\s+/g, '');
-    if (cleanCard.length < 15) {
-      setStripeError('Please enter a valid 16-digit card number.');
-      return;
+  const getStripeLink = (): string => {
+    if (item.type === 'subscription') {
+      if (item.tier === SubscriptionTier.PRO) return config.stripePaymentLinkPro;
+      if (item.tier === SubscriptionTier.ELITE) return config.stripePaymentLinkElite;
     }
-    if (!cardExpiry || cardExpiry.length < 4) {
-      setStripeError('Please enter a valid MM/YY expiration date.');
-      return;
-    }
-    if (!cardCvc || cardCvc.length < 3) {
-      setStripeError('Please enter a valid 3-digit CVC.');
-      return;
-    }
-
-    handleActivatePurchase('stripe');
+    return config.stripePaymentLinkTokens;
   };
 
   return (
@@ -362,119 +341,41 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
 
             {/* Stripe Tab View */}
             {paymentMethod === 'stripe' && (
-              <form onSubmit={handleStripeCardSubmit} className="space-y-4 animate-in fade-in duration-200">
+              <div className="space-y-4 animate-in fade-in duration-200">
                 <div className="p-3 bg-[#635BFF]/10 border border-[#635BFF]/30 rounded-xl flex items-center justify-between text-xs text-slate-300">
                   <div className="flex items-center gap-2">
                     <span className="text-[#635BFF] font-black text-sm">🔒</span>
                     <div>
-                      <span className="font-bold text-white">Stripe Connected Payouts</span>
-                      <span className="block text-[10px] text-slate-400">Routes to Don's connected bank account & card</span>
+                      <span className="font-bold text-white">Stripe Secure Checkout</span>
+                      <span className="block text-[10px] text-slate-400">You'll pay on Stripe's secure page. Money goes to Don's Empire.</span>
                     </div>
                   </div>
                   <span className="text-[10px] font-mono text-[#635BFF] font-bold">PCI-DSS LEVEL 1</span>
                 </div>
 
-                {stripeError && (
-                  <div className="p-2.5 bg-red-500/20 border border-red-500/40 rounded-xl text-red-300 text-xs font-bold">
-                    {stripeError}
-                  </div>
-                )}
+                <a
+                  href={getStripeLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3.5 bg-[#635BFF] hover:bg-[#534be0] text-white font-black text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg shadow-[#635BFF]/30 cursor-pointer flex items-center justify-center gap-2"
+                >
+                  {`Pay ${item.formattedPrice} with Stripe`}
+                  <span>↗</span>
+                </a>
 
-                <div className="space-y-3">
-                  <div>
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block mb-1">
-                      Cardholder Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={cardName}
-                      onChange={(e) => setCardName(e.target.value)}
-                      placeholder="Don Donaldson"
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#635BFF] transition-colors"
-                    />
-                  </div>
+                <p className="text-[11px] text-slate-400 text-center">
+                  After you complete payment on Stripe, come back here and tap below to activate.
+                </p>
 
-                  <div>
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block mb-1">
-                      Card Number
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      maxLength={19}
-                      value={cardNumber}
-                      onChange={(e) => {
-                        const val = e.target.value.replace(/\D/g, '').replace(/(\d{4})/g, '$1 ').trim();
-                        setCardNumber(val);
-                      }}
-                      placeholder="4242 4242 4242 4242"
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-[#635BFF] transition-colors"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-2">
-                    <div>
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block mb-1">
-                        Expiry
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        maxLength={5}
-                        value={cardExpiry}
-                        onChange={(e) => {
-                          let val = e.target.value.replace(/\D/g, '');
-                          if (val.length >= 2) val = val.substring(0, 2) + '/' + val.substring(2, 4);
-                          setCardExpiry(val);
-                        }}
-                        placeholder="MM/YY"
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-[#635BFF]"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block mb-1">
-                        CVC
-                      </label>
-                      <input
-                        type="password"
-                        required
-                        maxLength={4}
-                        value={cardCvc}
-                        onChange={(e) => setCardCvc(e.target.value.replace(/\D/g, ''))}
-                        placeholder="123"
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-[#635BFF]"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block mb-1">
-                        ZIP / Postal
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        maxLength={10}
-                        value={cardZip}
-                        onChange={(e) => setCardZip(e.target.value)}
-                        placeholder="90210"
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-[#635BFF]"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    disabled={isProcessing}
-                    className="w-full py-3.5 bg-[#635BFF] hover:bg-[#534be0] text-white font-black text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg shadow-[#635BFF]/30 cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2"
-                  >
-                    {isProcessing ? 'Authorizing with Stripe...' : `Pay ${item.formattedPrice} with Stripe`}
-                  </button>
-                </div>
-              </form>
+                <button
+                  type="button"
+                  disabled={isProcessing}
+                  onClick={() => handleActivatePurchase('stripe')}
+                  className="w-full py-3 px-4 bg-slate-800 hover:bg-slate-700 text-white font-black text-xs uppercase tracking-wider rounded-xl transition-all border border-slate-700 cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2"
+                >
+                  {isProcessing ? 'Verifying...' : "✓ I've completed my Stripe payment"}
+                </button>
+              </div>
             )}
 
             {/* Instant Developer Bypass for Don */}
