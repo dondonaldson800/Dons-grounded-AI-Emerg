@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace = "com.donsempire.groundedai"
+    namespace = "com.donsempire"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.donsempire.groundedai"
+        applicationId "com.donsempire"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
