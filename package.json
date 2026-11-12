@@ -7,7 +7,7 @@
     "dev": "tsx server.ts",
     "start": "node server.ts",
     "build": "vite build",
-    "mobile:init": "npx cap init \"Don's Grounded AI Empire\" com.donsempire.groundedai --web-dir dist",
+    "mobile:init": "npx cap init \"Don's Grounded AI Empire\" com.donsempire --web-dir dist",
     "mobile:add": "npx cap add android",
     "mobile:sync": "npx cap sync",
     "mobile:open": "npx cap open android",
