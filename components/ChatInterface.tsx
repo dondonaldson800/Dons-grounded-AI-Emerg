@@ -19,7 +19,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ tier, setShowPricing }) =
   const [thinkingMode, setThinkingMode] = useState(false);
   const [lowLatency, setLowLatency] = useState(tier === SubscriptionTier.FREE);
   const [searchGrounding, setSearchGrounding] = useState(false);
-  const [selectedModel, setSelectedModel] = useState<'gemini-3.8-flash'>('gemini-3.8-flash');
+  const [selectedModel, setSelectedModel] = useState<'gemini-3-flash-preview'>('gemini-3-flash-preview');
   const [isRecording, setIsRecording] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   
@@ -162,15 +162,15 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ tier, setShowPricing }) =
         {/* Gemini 3.7 Model Selector */}
         <div className="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800 shrink-0">
           <button
-            onClick={() => setSelectedModel('gemini-3.8-flash')}
+            onClick={() => setSelectedModel('gemini-3-flash-preview')}
             className={`px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider transition-all flex items-center gap-1 ${
-              selectedModel === 'gemini-3.8-flash'
+              selectedModel === 'gemini-3-flash-preview'
                 ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
             <span>✨</span>
-            <span>Gemini 3.8 Flash</span>
+            <span>Gemini 3 Flash</span>
           </button>
           <button
             onClick={() => setSelectedModel('gemini-3.8-flash')}

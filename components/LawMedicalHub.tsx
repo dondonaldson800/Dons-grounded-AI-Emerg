@@ -63,7 +63,7 @@ const LawMedicalHub: React.FC<LawMedicalHubProps> = ({ tier }) => {
       const ai = new GoogleGenAI({ apiKey });
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.8-flash",
+        model: "gemini-3-flash-preview",
         contents: `You are Don's specialized ${theme.promptRole} for ${theme.name} (${theme.id}/20).
 Provide an in-depth, grounded, and professional analysis for the user query.
 Use structured markdown, clear action items, and relevant legal/statute/clinical/trade standards.

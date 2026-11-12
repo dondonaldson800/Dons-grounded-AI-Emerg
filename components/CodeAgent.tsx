@@ -42,7 +42,7 @@ const CodeAgent: React.FC<CodeAgentProps> = ({ tier }) => {
       }));
 
       const response = await ai.models.generateContent({
-        model: 'gemini-3.8-flash',
+        model: 'gemini-3-flash-preview',
         contents: contents,
         config: {
           systemInstruction: "You are an elite master developer and coding assistant for Don's Grounded AI Empire. Provide highly optimized, production-ready code. Explain your reasoning clearly and concisely.",
@@ -75,7 +75,7 @@ const CodeAgent: React.FC<CodeAgentProps> = ({ tier }) => {
             <span className="text-emerald-400">{'</>'}</span> Master Developer Agent
           </h2>
           <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold mt-1">
-            Powered by Gemini 3.8 Flash
+            Powered by Gemini 3 Flash
           </p>
         </div>
         <div className="flex items-center gap-2">

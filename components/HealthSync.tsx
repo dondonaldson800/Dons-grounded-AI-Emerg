@@ -22,7 +22,7 @@ const HealthSync: React.FC<HealthSyncProps> = ({ tier }) => {
     try {
       const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
       const result = await ai.models.generateContent({
-        model: "gemini-3.8-flash",
+        model: "gemini-3-flash-preview",
         contents: `Analyze the following health/medical query and provide grounded, helpful information. 
         IMPORTANT: Include a clear medical disclaimer stating this is not professional advice.
         
