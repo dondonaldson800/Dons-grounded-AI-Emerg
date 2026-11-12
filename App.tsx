@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { AppTab, SubscriptionTier } from './types';
 import ChatInterface from './components/ChatInterface';
 import SearchMapsInterface from './components/SearchMapsInterface';
-import CreativeLab from './components/CreativeLab';
 import AudioHub from './components/AudioHub';
 import MusicHub from './components/MusicHub';
 import SeriesPreview from './components/SeriesPreview';
@@ -85,7 +84,6 @@ const App: React.FC = () => {
     { id: AppTab.DECOYS, label: 'Flagship Apps (1-6)', icon: '🚀' },
     { id: AppTab.CHAT, label: 'OmniChat', icon: '✨' },
     { id: AppTab.SEARCH, label: 'Explorer', icon: '🌍' },
-    { id: AppTab.CREATIVE, label: 'Image Generator', icon: '🎨' },
     { id: AppTab.AUDIO, label: 'Voice', icon: '🎙️' },
     { id: AppTab.MUSIC, label: 'Music', icon: '🎵' },
     { id: AppTab.PREVIEWS, label: 'Series', icon: '🧩' },
@@ -237,7 +235,6 @@ const App: React.FC = () => {
           {activeTab === AppTab.DECOYS && <DecoyAppsHub tier={tier} onOpenStore={() => setShowStore(true)} />}
           {activeTab === AppTab.CHAT && <ChatInterface tier={tier} setShowPricing={setShowPricing} />}
           {activeTab === AppTab.SEARCH && <SearchMapsInterface tier={tier} setShowPricing={setShowPricing} />}
-          {activeTab === AppTab.CREATIVE && <CreativeLab tier={tier} setShowPricing={setShowPricing} />}
           {activeTab === AppTab.AUDIO && <AudioHub tier={tier} />}
           {activeTab === AppTab.MUSIC && <MusicHub tier={tier} />}
           {activeTab === AppTab.PREVIEWS && (
