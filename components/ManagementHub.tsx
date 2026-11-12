@@ -21,7 +21,7 @@ const ManagementHub: React.FC = () => {
   const [keySavedSuccess, setKeySavedSuccess] = useState(false);
   const [masterKey, setMasterKey] = useState('');
   const [isSaving, setIsSaving] = useState(false);
-  const [activeTab, setActiveTab] = useState<'config' | 'projects' | 'health' | 'launch' | 'stores' | 'tokens' | 'assets' | 'skus' | 'monetization'>('skus');
+  const [activeTab, setActiveTab] = useState<'config' | 'projects' | 'health' | 'launch' | 'stores' | 'tokens' | 'skus' | 'monetization'>('skus');
   const [admobAppId, setAdmobAppId] = useState(PRODUCTION_ADMOB_VALUES.appId);
   const [admobBannerId, setAdmobBannerId] = useState(PRODUCTION_ADMOB_VALUES.bannerUnitId);
   const [admobInterstitialId, setAdmobInterstitialId] = useState(PRODUCTION_ADMOB_VALUES.interstitialUnitId);
@@ -44,8 +44,6 @@ const ManagementHub: React.FC = () => {
   const [showFullAccount, setShowFullAccount] = useState(false);
   const [copiedBankInfo, setCopiedBankInfo] = useState<string | null>(null);
   const [logs, setLogs] = useState<string[]>([]);
-  const [generatedLogo, setGeneratedLogo] = useState<string | null>(null);
-  const [isGeneratingLogo, setIsGeneratingLogo] = useState(false);
   const [activeUsers, setActiveUsers] = useState(1284);
   const [globalRevenue, setGlobalRevenue] = useState(4102);
   const [apiRequests, setApiRequests] = useState(84200);
@@ -115,26 +113,6 @@ const ManagementHub: React.FC = () => {
       setIsLaunched(true);
       setLogs(prev => [...prev, "[SUCCESS] Empire Launch Complete! All 20 apps are now LIVE."]);
     }, 4500);
-  };
-
-  const handleGenerateLogo = async () => {
-    setIsGeneratingLogo(true);
-    setLogs(prev => [...prev, "[AI] Initializing Imagen 4.0 for logo generation..."]);
-    try {
-      const { generateLogo } = await import('../services/logoService');
-      const logo = await generateLogo();
-      if (logo) {
-        setGeneratedLogo(logo);
-        setLogs(prev => [...prev, "[AI] Logo generated successfully. Rendering..."]);
-      } else {
-        setLogs(prev => [...prev, "[ERROR] Logo generation failed."]);
-      }
-    } catch (error) {
-      console.error(error);
-      setLogs(prev => [...prev, "[ERROR] Failed to connect to Imagen service."]);
-    } finally {
-      setIsGeneratingLogo(false);
-    }
   };
 
   const handleUnlock = async () => {
@@ -348,12 +326,6 @@ const ManagementHub: React.FC = () => {
                 className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${activeTab === 'tokens' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
               >
                 Tokens
-              </button>
-              <button 
-                onClick={() => setActiveTab('assets')}
-                className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${activeTab === 'assets' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
-              >
-                Assets
               </button>
             </div>
           </div>
@@ -1255,83 +1227,6 @@ const ManagementHub: React.FC = () => {
                 >
                   Run Diagnostics
                 </button>
-              </div>
-            </section>
-          </div>
-        )}
-
-        {activeTab === 'assets' && (
-          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <section className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8 space-y-6">
-              <div className="flex items-center gap-3">
-                <span className="text-2xl">🎨</span>
-                <h3 className="text-xl font-black text-white">Brand Assets</h3>
-              </div>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Generate high-quality logos and brand assets for your empire using Imagen.
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-4">
-                  <div className="p-6 bg-slate-950/50 rounded-2xl border border-slate-800 aspect-square flex items-center justify-center relative overflow-hidden group">
-                    {generatedLogo ? (
-                      <img src={generatedLogo} alt="Generated Logo" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
-                    ) : (
-                      <div className="text-center space-y-2">
-                        <span className="text-4xl opacity-20">🖼️</span>
-                        <p className="text-[10px] text-slate-600 font-black uppercase tracking-widest">No Logo Generated</p>
-                      </div>
-                    )}
-                    {isGeneratingLogo && (
-                      <div className="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center space-y-4">
-                        <div className="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                        <p className="text-[10px] text-indigo-400 font-black uppercase tracking-widest animate-pulse">Imagining...</p>
-                      </div>
-                    )}
-                  </div>
-                  {generatedLogo && (
-                    <button 
-                      className="w-full py-3 bg-slate-800 hover:bg-slate-700 rounded-xl text-xs font-black uppercase tracking-widest transition-all"
-                      onClick={() => {
-                        const link = document.createElement('a');
-                        link.href = generatedLogo;
-                        link.download = 'empire-logo.png';
-                        link.click();
-                      }}
-                    >
-                      Download Logo
-                    </button>
-                  )}
-                </div>
-
-                <div className="space-y-6">
-                  <div className="bg-slate-950/50 border border-slate-800 rounded-2xl p-6 space-y-4">
-                    <h4 className="text-xs font-black text-white uppercase tracking-widest">Logo Generator</h4>
-                    <p className="text-[10px] text-slate-500 leading-relaxed">
-                      Our Master Developer AI will craft a majestic, modern logo for "Don's AI Empire" using the latest Imagen models.
-                    </p>
-                    <div className="space-y-2">
-                      <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Current Prompt</p>
-                      <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 text-[10px] text-slate-400 italic">
-                        "A majestic, modern minimalist logo for 'Don's AI Empire'. A stylized golden crown integrated with a glowing blue neural network..."
-                      </div>
-                    </div>
-                    <button 
-                      onClick={handleGenerateLogo}
-                      disabled={isGeneratingLogo}
-                      className="w-full py-4 bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-800 rounded-xl text-xs font-black uppercase tracking-widest transition-all shadow-lg shadow-indigo-500/20"
-                    >
-                      {isGeneratingLogo ? 'Generating...' : 'Generate Empire Logo'}
-                    </button>
-                  </div>
-
-                  <div className="p-6 bg-amber-600/10 border border-amber-600/20 rounded-2xl space-y-2">
-                    <p className="text-[10px] font-black text-amber-500 uppercase tracking-widest">Pro Tip</p>
-                    <p className="text-[10px] text-amber-200/60 leading-relaxed">
-                      High-resolution 4K logos are available for Elite tier members. Your current generation is optimized for app icons (1K).
-                    </p>
-                  </div>
-                </div>
               </div>
             </section>
           </div>
