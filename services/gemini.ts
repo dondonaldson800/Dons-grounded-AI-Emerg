@@ -27,10 +27,10 @@ export const getAIInstance = () => {
 
 export const GEMINI_MODELS = {
   FLASH_3_8: 'gemini-3.8-flash',
-  FLASH_3_7: 'gemini-3.7-flash',
-  PRO_3_7: 'gemini-3.7-pro',
-  FLASH_2_5: 'gemini-2.5-flash',
-  PRO_2_5: 'gemini-2.5-pro'
+  FLASH_3_7: 'gemini-3.8-flash',
+  PRO_3_7: 'gemini-3.8-flash',
+  FLASH_2_5: 'gemini-3.8-flash',
+  PRO_2_5: 'gemini-3.8-flash'
 };
 
 export const runChat = async (
@@ -157,7 +157,7 @@ export const runUniversalQuery = async (params: {
 
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.8-flash',
       contents: `${params.domainContext ? `Domain: ${params.domainContext}\n\n` : ''}${params.query}`,
       config
     });
@@ -184,7 +184,7 @@ export const transcribeAudio = async (audioData: string, mimeType: string) => {
   const ai = getAIInstance();
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.8-flash',
       contents: {
         parts: [
           { inlineData: { data: audioData, mimeType } },
@@ -194,9 +194,9 @@ export const transcribeAudio = async (audioData: string, mimeType: string) => {
     });
     return response.text || "";
   } catch (err) {
-    console.warn("Transcribe with gemini-2.5-flash failed, trying gemini-3.7-flash:", err);
+    console.warn("Transcribe with gemini-3.8-flash failed, retrying:", err);
     const response = await ai.models.generateContent({
-      model: 'gemini-3.7-flash',
+      model: 'gemini-3.8-flash',
       contents: {
         parts: [
           { inlineData: { data: audioData, mimeType } },
@@ -211,7 +211,7 @@ export const transcribeAudio = async (audioData: string, mimeType: string) => {
 export const analyzeVideo = async (videoData: string, mimeType: string, prompt: string) => {
   const ai = getAIInstance();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.1-pro-preview',
+    model: 'gemini-3.8-flash',
     contents: {
       parts: [
         { inlineData: { data: videoData, mimeType } },
@@ -225,7 +225,7 @@ export const analyzeVideo = async (videoData: string, mimeType: string, prompt: 
 export const analyzeImage = async (imageData: string, mimeType: string, prompt: string) => {
   const ai = getAIInstance();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.1-pro-preview',
+    model: 'gemini-3.8-flash',
     contents: {
       parts: [
         { inlineData: { data: imageData, mimeType } },
@@ -258,7 +258,7 @@ export const searchGrounding = async (query: string) => {
   const ai = getAIInstance();
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.8-flash',
       contents: query,
       config: {
         tools: [{ googleSearch: {} }]
@@ -302,7 +302,7 @@ export const mapsGrounding = async (query: string, location?: { lat: number, lng
 
   const ai = getAIInstance();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3.8-flash',
     contents: query,
     config: {
       tools: [{ googleMaps: {} }],
