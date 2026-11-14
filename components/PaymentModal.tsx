@@ -94,7 +94,13 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
       if (item.tier === SubscriptionTier.PRO) return config.stripePaymentLinkPro;
       if (item.tier === SubscriptionTier.ELITE) return config.stripePaymentLinkElite;
     }
-    return config.stripePaymentLinkTokens;
+    if (item.type === 'tokens') {
+      if (item.id === 'tokens_creator') return config.stripePaymentLinkTokensCreator;
+      if (item.id === 'tokens_pro') return config.stripePaymentLinkTokensPro;
+      if (item.id === 'tokens_empire') return config.stripePaymentLinkTokensVault;
+      return config.stripePaymentLinkTokensStarter;
+    }
+    return config.stripePaymentLinkTokensStarter;
   };
 
   return (
