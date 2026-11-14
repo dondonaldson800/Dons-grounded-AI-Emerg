@@ -116,6 +116,20 @@ export const MASTER_SUITE_SKUS: StoreProductSKU[] = [
     description: "2,000 Grounded AI tokens with bonus credits for complex coding audits and calculations."
   },
   {
+    id: 'token_pro_5000',
+    name: 'Pro Token Pack (5,000 Tokens)',
+    type: 'inapp_consumable',
+    priceUsd: 29.99,
+    formattedPrice: '$29.99',
+    googlePlaySku: 'dons_tokens_pro_5000',
+    appleProductId: 'com.donsempire.groundedai.tokens.5000',
+    appleAppSku: 'DONS_EMPIRE_2026',
+    amazonSku: 'dons_tokens_pro_5000',
+    samsungItemId: 'dons_tok_5000',
+    title: "5,000 Empire Tokens",
+    description: "5,000 Grounded AI tokens for power users and heavy daily use."
+  },
+  {
     id: 'token_vault_10000',
     name: 'Empire Vault (10,000 Tokens)',
     type: 'inapp_consumable',

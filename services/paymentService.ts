@@ -17,7 +17,10 @@ export interface PaymentConfig {
   stripeAccountId?: string; // Stripe Connected Account ID e.g. acct_1DonDonaldsonEmpirePayouts
   stripePaymentLinkPro: string;
   stripePaymentLinkElite: string;
-  stripePaymentLinkTokens: string;
+  stripePaymentLinkTokensStarter: string;
+  stripePaymentLinkTokensCreator: string;
+  stripePaymentLinkTokensPro: string;
+  stripePaymentLinkTokensVault: string;
   isStripeTestMode: boolean;
   stripeConnected: boolean;
   // Direct Bank Account Payout Destination (Cash App Sutton Bank Direct Deposit)
@@ -52,7 +55,10 @@ const DEFAULT_CONFIG: PaymentConfig = {
   stripeAccountId: 'acct_1DonDonaldsonEmpirePayouts',
   stripePaymentLinkPro: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_PRO) || 'https://buy.stripe.com/bJe28j1Zx7FhgrjePacMM01',
   stripePaymentLinkElite: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_ELITE) || 'https://buy.stripe.com/14A14fcEbaRt5MFgXicMM02',
-  stripePaymentLinkTokens: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_TOKENS) || 'https://buy.stripe.com/don_grounded_tokens_pack',
+  stripePaymentLinkTokensStarter: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_TOKENS_STARTER) || 'https://buy.stripe.com/7sYfZ90Vt2kXb6ZdL6cMM03',
+  stripePaymentLinkTokensCreator: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_TOKENS_CREATOR) || 'https://buy.stripe.com/14A8wHdIf8Jl2At7mIcMM04',
+  stripePaymentLinkTokensPro: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_TOKENS_PRO) || 'https://buy.stripe.com/4gMdR1gUre3F4IBayUcMM05',
+  stripePaymentLinkTokensVault: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_TOKENS_VAULT) || 'https://buy.stripe.com/28E7sDdIfbVxb6Z22ocMM06',
   isStripeTestMode: false,
   stripeConnected: true,
   // Don's verified Direct Deposit Banking Info (Cash App - Sutton Bank)
@@ -82,7 +88,10 @@ export function getPaymentConfig(): PaymentConfig {
         stripeAccountId: parsed.stripeAccountId || DEFAULT_CONFIG.stripeAccountId,
         stripePaymentLinkPro: parsed.stripePaymentLinkPro || DEFAULT_CONFIG.stripePaymentLinkPro,
         stripePaymentLinkElite: parsed.stripePaymentLinkElite || DEFAULT_CONFIG.stripePaymentLinkElite,
-        stripePaymentLinkTokens: parsed.stripePaymentLinkTokens || DEFAULT_CONFIG.stripePaymentLinkTokens,
+        stripePaymentLinkTokensStarter: parsed.stripePaymentLinkTokensStarter || DEFAULT_CONFIG.stripePaymentLinkTokensStarter,
+        stripePaymentLinkTokensCreator: parsed.stripePaymentLinkTokensCreator || DEFAULT_CONFIG.stripePaymentLinkTokensCreator,
+        stripePaymentLinkTokensPro: parsed.stripePaymentLinkTokensPro || DEFAULT_CONFIG.stripePaymentLinkTokensPro,
+        stripePaymentLinkTokensVault: parsed.stripePaymentLinkTokensVault || DEFAULT_CONFIG.stripePaymentLinkTokensVault,
         isStripeTestMode: Boolean(parsed.isStripeTestMode),
         stripeConnected: parsed.stripeConnected !== undefined ? Boolean(parsed.stripeConnected) : true,
         bankName: parsed.bankName || DEFAULT_CONFIG.bankName,

@@ -26,6 +26,7 @@ interface TokenBundle {
 export const TOKEN_BUNDLES: TokenBundle[] = [
   { id: 'tokens_starter', name: 'Starter Pack', tokens: 500, price: 4.99, formattedPrice: '$4.99', description: '500 Grounded AI tokens for image generation and voice queries.', icon: '🪙' },
   { id: 'tokens_creator', name: 'Creator Bundle', tokens: 2000, price: 14.99, formattedPrice: '$14.99', description: '2,000 tokens (+25% bonus) for heavy model grounding & deep code scans.', badge: 'POPULAR', icon: '💎' },
+  { id: 'tokens_pro', name: 'Pro Pack', tokens: 5000, price: 29.99, formattedPrice: '$29.99', description: '5,000 tokens for power users and heavy daily use.', icon: '🚀' },
   { id: 'tokens_empire', name: 'Empire Vault', tokens: 10000, price: 49.99, formattedPrice: '$49.99', description: '10,000 tokens (+50% bonus) for unlimited multi-app usage across the suite.', badge: 'BEST VALUE', icon: '👑' },
 ];
 
