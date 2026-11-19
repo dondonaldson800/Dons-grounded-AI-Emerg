@@ -462,7 +462,7 @@ const ManagementHub: React.FC = () => {
                       </button>
                     </div>
                     <p className="text-[11px] text-slate-400">
-                      Veo 3.1 video generation, Google Maps grounding, Gemini 3.7 Pro, 99,999 tokens, and all 20 apps fully unlocked.
+                      Veo 3.1 video generation, Google Maps grounding, Gemini 3.7 Pro, 99,999 tokens, and ad-free tools. All 20 Empire Apps are free for everyone.
                     </p>
                   </div>
                 ) : (

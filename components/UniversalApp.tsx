@@ -5,7 +5,6 @@ import { AppEmpireConfig, getTheme, ALL_EMPIRE_APPS, AppConfig } from '../themeM
 import { AppInteractiveTools } from './AppInteractiveTools';
 import { runUniversalQuery } from '../services/gemini';
 import { AdBanner } from './AdBanner';
-import PricingModal from './PricingModal';
 
 interface UniversalAppProps {
   appName?: string;
@@ -26,8 +25,7 @@ const UniversalApp: React.FC<UniversalAppProps> = ({
   onClose,
   standaloneMode = false
 }) => {
-  const { incrementTaskCount, tokens, isMasterDeveloper, updateTier } = useUser();
-  const [showPaywall, setShowPaywall] = useState<boolean>(false);
+  const { incrementTaskCount } = useUser();
 
   // Find config by initial key or appName match
   const matchedKey = initialAppKey || Object.keys(AppEmpireConfig).find(k => 
@@ -88,15 +86,8 @@ const UniversalApp: React.FC<UniversalAppProps> = ({
     const userMsg = customPrompt || input.trim();
     if (!userMsg) return;
 
-    // Check paywall for regular unpaid users
-    if (!isMasterDeveloper && tier === SubscriptionTier.FREE && tokens <= 0) {
-      setMessages(prev => [...prev, {
-        role: 'model',
-        text: "🔒 Free preview limit reached. Don's Grounded AI Empire requires an active subscription or token package. Please upgrade via Cash App ($DonDonaldson800), Stripe, or PayPal to continue."
-      }]);
-      setShowPaywall(true);
-      return;
-    }
+    // All 20 Empire Apps are free for everyone — no paywall on consults.
+    // Tokens are still used for store items, badges and perks.
 
     if (!customPrompt) setInput('');
     setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
@@ -510,16 +501,6 @@ Always include a brief professional advisory note at the end.`;
         </div>
       )}
 
-      {showPaywall && (
-        <PricingModal
-          currentTier={tier}
-          onSelectTier={(newTier) => {
-            updateTier(newTier);
-            setShowPaywall(false);
-          }}
-          onClose={() => setShowPaywall(false)}
-        />
-      )}
     </div>
   );
 };
