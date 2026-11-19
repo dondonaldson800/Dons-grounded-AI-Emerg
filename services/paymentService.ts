@@ -54,7 +54,7 @@ const DEFAULT_CONFIG: PaymentConfig = {
   stripePublicKey: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PUBLIC_KEY) || 'pk_live_51EmpireDon2026SecureGroundedAI',
   stripeAccountId: 'acct_1DonDonaldsonEmpirePayouts',
   stripePaymentLinkPro: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_PRO) || 'https://buy.stripe.com/bJe28j1Zx7FhgrjePacMM01',
-  stripePaymentLinkElite: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_ELITE) || 'https://buy.stripe.com/14A14fcEbaRt5MFgXicMM02',
+  stripePaymentLinkElite: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_ELITE) || 'https://buy.stripe.com/5kQeV59rZ1gT5MF4awcMM08',
   stripePaymentLinkTokensStarter: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_TOKENS_STARTER) || 'https://buy.stripe.com/7sYfZ90Vt2kXb6ZdL6cMM03',
   stripePaymentLinkTokensCreator: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_TOKENS_CREATOR) || 'https://buy.stripe.com/14A8wHdIf8Jl2At7mIcMM04',
   stripePaymentLinkTokensPro: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_TOKENS_PRO) || 'https://buy.stripe.com/4gMdR1gUre3F4IBayUcMM05',
