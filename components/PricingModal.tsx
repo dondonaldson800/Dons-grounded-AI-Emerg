@@ -47,7 +47,7 @@ const PricingModal: React.FC<PricingModalProps> = ({ currentTier, onSelectTier, 
     {
       id: SubscriptionTier.ELITE,
       name: 'Infinite Creator',
-      price: '$24.99/mo',
+      price: '$19.99/mo',
       description: 'The ultimate tier for the 20-app series.',
       features: [
         'Veo 3.1 Video Generation 🎬',
@@ -135,7 +135,7 @@ const PricingModal: React.FC<PricingModalProps> = ({ currentTier, onSelectTier, 
                     setCheckoutItem({
                       id: `tier_${tier.id}`,
                       name: `${tier.name} (${tier.id})`,
-                      amount: tier.id === SubscriptionTier.PRO ? 9.99 : 24.99,
+                      amount: tier.id === SubscriptionTier.PRO ? 9.99 : 19.99,
                       formattedPrice: tier.price,
                       type: 'subscription',
                       tier: tier.id,

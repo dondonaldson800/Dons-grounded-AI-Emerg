@@ -9,7 +9,7 @@ export interface MonetizationScenario {
   icon: string;
   mau: number;
   subConversionRate: number; // percentage, e.g. 3.5
-  proRatio: number; // percentage of subscribers choosing $9.99 Pro vs $24.99 Elite
+  proRatio: number; // percentage of subscribers choosing $9.99 Pro vs $19.99 Elite
   tokenBuyerRate: number; // percentage of non-subscribers buying tokens, e.g. 2.0
   avgTokenSpend: number; // in USD, e.g. 10.00
   adImpressionsPerDay: number; // per active user
@@ -116,7 +116,7 @@ export const MockMonetizationHub: React.FC<MockMonetizationHubProps> = ({ onClos
     const eliteSubscribers = totalSubscribers - proSubscribers;
 
     const proPriceMonthly = 9.99;
-    const elitePriceMonthly = 24.99;
+    const elitePriceMonthly = 19.99;
 
     const monthlyProRevenue = proSubscribers * proPriceMonthly;
     const monthlyEliteRevenue = eliteSubscribers * elitePriceMonthly;
@@ -194,7 +194,7 @@ ANNUAL RUN-RATE (ARR): $${metrics.grossAnnualRevenue.toLocaleString(undefined, {
 REVENUE STREAMS BREAKDOWN (MONTHLY):
 1. Subscriptions: $${metrics.monthlySubscriptionRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / mo
    - Power User Pro ($9.99/mo): ${metrics.proSubscribers.toLocaleString()} subs ($${metrics.monthlyProRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})
-   - Infinite Creator Elite ($24.99/mo): ${metrics.eliteSubscribers.toLocaleString()} subs ($${metrics.monthlyEliteRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})
+   - Infinite Creator Elite ($19.99/mo): ${metrics.eliteSubscribers.toLocaleString()} subs ($${metrics.monthlyEliteRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})
    - Total Subscribers: ${metrics.totalSubscribers.toLocaleString()} (${subConversionRate}% conversion)
 
 2. In-App Token Packs: $${metrics.monthlyTokenRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / mo
@@ -455,7 +455,7 @@ STORE DISTRIBUTION ESTIMATE:
               </span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-slate-400">Infinite Creator Elite ($24.99/mo):</span>
+              <span className="text-slate-400">Infinite Creator Elite ($19.99/mo):</span>
               <span className="font-mono text-white font-bold">
                 {metrics.eliteSubscribers.toLocaleString()} subs (${metrics.monthlyEliteRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})
               </span>
@@ -707,7 +707,7 @@ STORE DISTRIBUTION ESTIMATE:
           {/* Slider 3: Pro vs Elite Ratio */}
           <div className="space-y-2">
             <div className="flex justify-between items-center text-xs">
-              <span className="text-slate-300 font-bold">Pro ($9.99) vs Elite ($24.99)</span>
+              <span className="text-slate-300 font-bold">Pro ($9.99) vs Elite ($19.99)</span>
               <span className="text-purple-400 font-mono font-black">{proRatio}% Pro</span>
             </div>
             <input
