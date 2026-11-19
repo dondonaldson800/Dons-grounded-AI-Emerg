@@ -60,7 +60,7 @@
       "storeProducts": {
         "subscriptions": [
           { "sku": "dons_empire_pro_monthly", "name": "Power User Pro", "price": "9.99" },
-          { "sku": "dons_empire_elite_monthly", "name": "Infinite Creator Elite", "price": "24.99" }
+          { "sku": "dons_empire_elite_monthly", "name": "Infinite Creator Elite", "price": "19.99" }
         ],
         "inAppProducts": [
           { "sku": "dons_tokens_starter_500", "name": "Starter Token Pack (500)", "price": "4.99" },
