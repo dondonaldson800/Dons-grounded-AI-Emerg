@@ -14,9 +14,9 @@ const PricingModal: React.FC<PricingModalProps> = ({ currentTier, onSelectTier, 
   const tiers = [
     {
       id: SubscriptionTier.FREE,
-      name: 'Community',
+      name: 'Free Trial',
       price: '$0',
-      description: 'Zero startup cost. All 20 Empire Apps included, free.',
+      description: '3 days free. All 20 Empire Apps included, free to try.',
       features: [
         'All 20 Empire Apps included',
         'Standard OmniChat (Lite)',
@@ -26,7 +26,24 @@ const PricingModal: React.FC<PricingModalProps> = ({ currentTier, onSelectTier, 
         'Standard Voice Hub'
       ],
       color: 'bg-slate-700',
-      buttonText: 'Select Free'
+      buttonText: 'Start Free Trial'
+    },
+    {
+      id: SubscriptionTier.BASIC,
+      name: 'Basic',
+      price: '$4.99/mo',
+      description: 'Keep all 20 apps after your free trial. Standard features, no extras.',
+      features: [
+        'All 20 Empire Apps included',
+        'Standard OmniChat',
+        'Basic Explorer Access',
+        'Image Generation (1K)',
+        'Sync across Play/Galaxy Store',
+        'Standard Voice Hub'
+      ],
+      color: 'bg-emerald-600',
+      buttonText: 'Start Basic — 3 Days Free',
+      trial: true
     },
     {
       id: SubscriptionTier.PRO,
@@ -37,6 +54,7 @@ const PricingModal: React.FC<PricingModalProps> = ({ currentTier, onSelectTier, 
         'Advanced OmniChat (Pro)',
         'Deep Thinking Mode 🧠',
         'Real-time Search Grounding',
+        'High-Res Image (4K)',
         'Priority Processing',
         'Cross-platform Firefox Plugin'
       ],
@@ -52,7 +70,6 @@ const PricingModal: React.FC<PricingModalProps> = ({ currentTier, onSelectTier, 
       features: [
         'Veo 3.1 Video Generation 🎬',
         'Google Maps Grounding 📍',
-        'High-Res Image (4K)',
         'Multi-Speaker Voice Synthesis',
         'Shared Credits across Series'
       ],
@@ -83,7 +100,7 @@ const PricingModal: React.FC<PricingModalProps> = ({ currentTier, onSelectTier, 
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {tiers.map((tier) => (
             <div 
               key={tier.id}
@@ -97,6 +114,13 @@ const PricingModal: React.FC<PricingModalProps> = ({ currentTier, onSelectTier, 
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                   <span className="bg-indigo-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
                     Recommended
+                  </span>
+                </div>
+              )}
+              {(tier as { trial?: boolean }).trial && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span className="bg-emerald-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
+                    3 Days Free
                   </span>
                 </div>
               )}
@@ -135,7 +159,7 @@ const PricingModal: React.FC<PricingModalProps> = ({ currentTier, onSelectTier, 
                     setCheckoutItem({
                       id: `tier_${tier.id}`,
                       name: `${tier.name} (${tier.id})`,
-                      amount: tier.id === SubscriptionTier.PRO ? 9.99 : 19.99,
+                      amount: tier.id === SubscriptionTier.BASIC ? 4.99 : tier.id === SubscriptionTier.PRO ? 9.99 : 19.99,
                       formattedPrice: tier.price,
                       type: 'subscription',
                       tier: tier.id,

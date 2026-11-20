@@ -91,6 +91,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
 
   const getStripeLink = (): string => {
     if (item.type === 'subscription') {
+      if (item.tier === SubscriptionTier.BASIC) return config.stripePaymentLinkBasic;
       if (item.tier === SubscriptionTier.PRO) return config.stripePaymentLinkPro;
       if (item.tier === SubscriptionTier.ELITE) return config.stripePaymentLinkElite;
     }
