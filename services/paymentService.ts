@@ -15,6 +15,7 @@ export interface PaymentConfig {
   payPalEmail: string; // e.g. dondonaldson800@gmail.com
   stripePublicKey: string; // e.g. pk_live_... or pk_test_...
   stripeAccountId?: string; // Stripe Connected Account ID e.g. acct_1DonDonaldsonEmpirePayouts
+  stripePaymentLinkBasic: string;
   stripePaymentLinkPro: string;
   stripePaymentLinkElite: string;
   stripePaymentLinkTokensStarter: string;
@@ -53,6 +54,7 @@ const DEFAULT_CONFIG: PaymentConfig = {
   payPalEmail: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_PAYPAL_EMAIL) || 'dondonaldson800@gmail.com',
   stripePublicKey: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PUBLIC_KEY) || 'pk_live_51EmpireDon2026SecureGroundedAI',
   stripeAccountId: 'acct_1DonDonaldsonEmpirePayouts',
+  stripePaymentLinkBasic: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_BASIC) || 'https://buy.stripe.com/6oU7sDdIf9NpgrjePacMM09',
   stripePaymentLinkPro: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_PRO) || 'https://buy.stripe.com/bJe28j1Zx7FhgrjePacMM01',
   stripePaymentLinkElite: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_ELITE) || 'https://buy.stripe.com/5kQeV59rZ1gT5MF4awcMM08',
   stripePaymentLinkTokensStarter: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_STRIPE_PAYMENT_LINK_TOKENS_STARTER) || 'https://buy.stripe.com/7sYfZ90Vt2kXb6ZdL6cMM03',
@@ -86,6 +88,7 @@ export function getPaymentConfig(): PaymentConfig {
         payPalEmail: parsed.payPalEmail || DEFAULT_CONFIG.payPalEmail,
         stripePublicKey: parsed.stripePublicKey || DEFAULT_CONFIG.stripePublicKey,
         stripeAccountId: parsed.stripeAccountId || DEFAULT_CONFIG.stripeAccountId,
+        stripePaymentLinkBasic: parsed.stripePaymentLinkBasic || DEFAULT_CONFIG.stripePaymentLinkBasic,
         stripePaymentLinkPro: parsed.stripePaymentLinkPro || DEFAULT_CONFIG.stripePaymentLinkPro,
         stripePaymentLinkElite: parsed.stripePaymentLinkElite || DEFAULT_CONFIG.stripePaymentLinkElite,
         stripePaymentLinkTokensStarter: parsed.stripePaymentLinkTokensStarter || DEFAULT_CONFIG.stripePaymentLinkTokensStarter,

@@ -34,6 +34,24 @@ export interface AppStoreSkuCollection {
 // 1. MASTER SUITE (DON'S GROUNDED AI EMPIRE - 20-IN-1)
 export const MASTER_SUITE_SKUS: StoreProductSKU[] = [
   {
+    id: 'sub_basic_monthly',
+    name: 'Basic (Monthly)',
+    type: 'subscription',
+    priceUsd: 4.99,
+    formattedPrice: '$4.99/month',
+    billingPeriod: 'monthly',
+    googlePlaySku: 'dons_empire_basic_monthly',
+    googlePlayBasePlanId: 'basic-monthly-base',
+    appleProductId: 'com.donsempire.groundedai.basic.monthly',
+    appleAppSku: 'DONS_EMPIRE_2026',
+    amazonSku: 'dons_empire_basic_monthly',
+    samsungItemId: 'dons_basic_month',
+    title: "Basic Subscription - Don's Grounded AI Empire",
+    description: "All 20 Empire Apps included with standard chat and tools. Start with a 3-day free trial, then $4.99 a month.",
+    freeTrialDays: 3,
+    gracePeriodDays: 16
+  },
+  {
     id: 'sub_pro_monthly',
     name: 'Power User Pro (Monthly)',
     type: 'subscription',
@@ -47,7 +65,7 @@ export const MASTER_SUITE_SKUS: StoreProductSKU[] = [
     amazonSku: 'dons_empire_pro_monthly',
     samsungItemId: 'dons_pro_month',
     title: "Pro Subscription - Don's Grounded AI Empire",
-    description: "Unlock deep thinking mode, real-time Google search grounding, and unlimited professional multi-tool access.",
+    description: "Unlock deep thinking mode, real-time Google search grounding, high-res 4K image generation, and unlimited professional multi-tool access.",
     freeTrialDays: 7,
     gracePeriodDays: 16
   },
