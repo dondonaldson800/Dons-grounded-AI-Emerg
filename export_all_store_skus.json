@@ -6,6 +6,24 @@
     "package_name": "com.donsempire.groundedai",
     "subscriptions": [
       {
+        "name": "Basic (Monthly)",
+        "price": "$4.99/mo",
+        "google_play": {
+          "product_id": "dons_empire_basic_monthly",
+          "base_plan_id": "basic-monthly-base",
+          "type": "Auto-renewing subscription"
+        },
+        "apple_app_store": {
+          "product_id": "com.donsempire.groundedai.basic.monthly"
+        },
+        "amazon_appstore": {
+          "sku": "dons_empire_basic_monthly"
+        },
+        "samsung_galaxy_store": {
+          "item_id": "dons_basic_month"
+        }
+      },
+      {
         "name": "Power User Pro (Monthly)",
         "price": "$9.99/mo",
         "google_play": {

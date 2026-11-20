@@ -14,6 +14,7 @@ export enum AppTab {
 
 export enum SubscriptionTier {
   FREE = 'Free',
+  BASIC = 'Basic',
   PRO = 'Pro',
   ELITE = 'Elite'
 }
